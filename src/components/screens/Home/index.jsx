@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import "./Home.css";
+import React from "react";
+import "./Home.css"; // Archivo de estilos
 
 const Home = () => {
   const words = [
@@ -27,16 +27,6 @@ const Home = () => {
     "multiplataforma", "cross-platform"
   ];
 
-  const getRowPositions = (rows) => {
-    const colsPerRow = Math.ceil(words.length / rows); // Número de columnas por fila
-    return words.map((_, index) => ({
-      top: `${(Math.floor(index / colsPerRow) * 20)}%`,
-      left: `${(index % colsPerRow) * (100 / colsPerRow)}%`
-    }));
-  };
-
-  const positions = useMemo(() => getRowPositions(5), [words]);
-
   return (
     <div className="home">
       <h1 className="title">
@@ -44,13 +34,7 @@ const Home = () => {
       </h1>
       <div className="background-words">
         {words.map((word, index) => (
-          <span
-            key={index}
-            className="word"
-            style={positions[index]}
-          >
-            {word}
-          </span>
+          <span key={index} className="word">{word}</span>
         ))}
       </div>
     </div>
